@@ -12,7 +12,7 @@ public class FabricaConexao {
 	
 	public static Connection getConexao() throws ConexaoException {
 
-		String url = "jdbc:mysql://localhost/locadora?useTimezone=true&serverTimezone=UTC";
+		String url = "jdbc:mysql://localhost/bancomvc?useTimezone=true&serverTimezone=UTC";
 
 		try {
 			return DriverManager.getConnection(url, "root", "BKUgcH3YTpnexdJ");
@@ -22,8 +22,8 @@ public class FabricaConexao {
 		}
 	}
 
-	public static void fecharConexao(Connection conexao) throws ConexaoException {
-		fecharTudo(conexao, null, null, null);
+	public static void fecharConexao(Connection conn) throws ConexaoException {
+		fecharTudo(conn, null, null, null);
 	}
 
 	public static void fecharStatement(Statement stmt) throws ConexaoException {

@@ -6,15 +6,28 @@ public class Cliente {
 	private String nome;
 	private String cpf;
 	private String end;
+	private int idConta;
 	
 	public Cliente() {}
 	
-	public Cliente(int idCliente, String nome, String cpf, String end) {
+	public Cliente(int idCliente, String nome, String cpf, String end, int idConta) {
 		this.idCliente = idCliente;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.end = end;
+		this.idConta = idConta;
 	}
+	
+	public Cliente(String nome, String cpf, String end) {
+		
+		this.nome = nome;
+		this.cpf = cpf;
+		this.end = end;
+		
+	}
+	
+	
+	
 	
 	public int getIdCliente() {
 		return idCliente;
@@ -41,6 +54,14 @@ public class Cliente {
 	}
 	public void setEnd(String end) {
 		this.end = end;
+	}
+
+	public int getIdConta() {
+		return idConta;
+	}
+
+	public void setIdConta(int idConta) {
+		this.idConta = idConta;
 	}
 	
 	

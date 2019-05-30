@@ -5,9 +5,9 @@ public class Poupanca {
 	
 	private int id;
 	private Double saldo;
-	private String tipo;
 	
-	public Poupanca(int id, Double saldo, String tipo) {
+	
+	public Poupanca(int id, Double saldo) {
 		this.id = id;
 		this.saldo = saldo;
 	}
