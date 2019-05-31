@@ -3,19 +3,17 @@ package banco.model.controller;
 import java.util.List;
 
 import banco.conexao.factory.jdbc.ConexaoException;
-import banco.model.dao.ClienteDAO;
 import banco.model.dao.ContaCorrenteDAO;
-import banco.model.entity.Cliente;
 import banco.model.entity.ContaCorrente;
 import banco.model.service.calculos.Calculo;
 import banco.model.service.validation.ContaCorrenteValidation;
 
 public class ContaCorrenteController {
 
+	
 	private ContaCorrenteDAO dao;
 	private Calculo calculo;
-
-	ContaCorrenteValidation valida;
+	private ContaCorrenteValidation valida;
 
 	public ContaCorrenteController() throws ConexaoException {
 		this.dao = new ContaCorrenteDAO();
@@ -39,6 +37,11 @@ public class ContaCorrenteController {
 	
 	public List<ContaCorrente> getOneAccount(int idConta)throws ConexaoException {
 		dao = new ContaCorrenteDAO();
+		valida = new ContaCorrenteValidation();
+		
+		
+		if (valida.validaID(idConta)==true) {
+		
 		List<ContaCorrente> contas = dao.getOneCC(idConta);
 		
 		System.out.println("Conta adquirida:");
@@ -47,26 +50,39 @@ public class ContaCorrenteController {
 					clien.getTipo());
 		}
 		System.out.println();
-		return contas;
+		return contas; 
+		} else {
+			return null;
+		}
 		
-	}
+	}/*getOneAccount*/
 	
 	public void depositar (int idConta, double valor) throws ConexaoException {
 		
-		if (valor < 0) {
-			System.out.println("Valor de deposito inválido.");
+		valida = new ContaCorrenteValidation();
+		if (valida.validaID(idConta) == true) {
+			if(valida.valorDeposito(valor) == true) {
+			
+				calculo = new Calculo();
+				calculo.depositar(idConta, valor);
+			
+			}
 		} else {
-			
-			
+			System.out.println("...por favor confirme o numero da conta.");
+		}
+	}
+	
+	public void sacar (int idConta, double valor) throws ConexaoException {
+		
+		valida = new ContaCorrenteValidation();
+		if(valida.validaID(idConta)==true) {
 			calculo = new Calculo();
-			calculo.depositar(idConta, valor);
-			
-			
+			calculo.sacar(idConta, valor);
+		}else {
+			System.out.println("Operação não foi realizada.");
 		}
 		
 	}
-	
-	
 	
 	
 	

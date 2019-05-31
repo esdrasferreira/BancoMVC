@@ -47,8 +47,8 @@ public class ClienteValidation {
 
 			}
 		}
-		//System.out.println("não existe");
+		System.out.println("ID de cliente não existe no sistema.");
 		return false;
-	}
+	}/*validaID*/
 
 }/* ClienteValidation */

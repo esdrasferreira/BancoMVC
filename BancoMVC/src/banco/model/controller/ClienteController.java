@@ -55,7 +55,7 @@ public class ClienteController {
 			System.out.println();
 			return del;
 		}else {
-			String del = "ID não existe no sistema.";
+			String del = "confirme o ID do cliente por favor....";
 			System.out.println(del);
 			System.out.println();
 			return del;

@@ -26,7 +26,22 @@ public class Calculo {
 		
 	}/*depositar*/
 	
-	
+	public void sacar (int idConta, double valor)throws ConexaoException {
+		dao = new ContaCorrenteDAO();
+		List<ContaCorrente> contas = dao.getOneCC(idConta);
+		
+		if (valor > contas.get(0).getSaldo()) {
+			System.out.println("Valor do saque maior que o valor disponivel, saldo: R$ "+contas.get(0).getSaldo());
+		} else {
+			double saldo = contas.get(0).getSaldo()-valor;
+			contas.get(0).setSaldo(saldo);
+			
+			dao.updateSaldo(contas.get(0));
+			System.out.println("Saque realizado com sucesso, saldo disponível: R$ "+contas.get(0).getSaldo());
+		}
+		
+		
+	}/*sacar*/
 	
 	
 
