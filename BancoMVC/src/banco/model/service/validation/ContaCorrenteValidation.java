@@ -52,7 +52,7 @@ public class ContaCorrenteValidation {
 				return false;
 			}
 		} else {
-			System.out.println("Tipo de conta de ser: comun ou personalite");
+			System.out.println("Tipo de conta deve ser: comun ou personalite");
 			return false;
 		}
 

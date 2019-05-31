@@ -42,7 +42,7 @@ public class ClienteController {
 			System.out.printf("ID cliente: %02d\t|Nome: %s\t | CPF: %s | End: %s | IDconta: %02d%n",
 					clien.getIdCliente(), clien.getNome(), clien.getCpf(), clien.getEnd(), clien.getIdConta());
 		}
-
+		System.out.println();
 	}
 
 	public String delCliente(int ID) throws ConexaoException {
@@ -52,10 +52,12 @@ public class ClienteController {
 			dao.delCliente(ID);
 			String del = "Cliente deletado";
 			System.out.println(del);
+			System.out.println();
 			return del;
 		}else {
 			String del = "ID não existe no sistema.";
 			System.out.println(del);
+			System.out.println();
 			return del;
 		}
 		
