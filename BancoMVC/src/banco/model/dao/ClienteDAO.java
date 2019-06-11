@@ -61,12 +61,12 @@ public class ClienteDAO {
 			String end = cliente.getEnd();
 			int idContaC = autoIncKeyFromApi;
 
-			st.executeUpdate("INSERT INTO cliente (idcliente, nome, cpf, end, contaCorrente_idconta ) values ('" + idCliente + "', '"
-					+ nome + "', '" + cpf + "', '" + end + "', '" + idContaC + "')");
-			
-			
-			st.executeUpdate("INSERT INTO `bancomvc`.`poupanca` (`saldo`, `contaCorrente_idconta`) VALUES ('0', '"+idContaC+"')");
-			
+			st.executeUpdate("INSERT INTO cliente (idcliente, nome, cpf, end, contaCorrente_idconta ) values ('"
+					+ idCliente + "', '" + nome + "', '" + cpf + "', '" + end + "', '" + idContaC + "')");
+
+			st.executeUpdate("INSERT INTO `bancomvc`.`poupanca` (`saldo`, `contaCorrente_idconta`) VALUES ('0', '"
+					+ idContaC + "')");
+
 			System.out.println("...conta criada com sucesso.");
 
 		} catch (SQLException sqle) {
@@ -119,7 +119,7 @@ public class ClienteDAO {
 //				System.out.printf("ID cliente: %02d\t|Nome: %s\t | CPF: %s | End: %s | IDconta: %02d%n", clien.getIdCliente(),
 //						clien.getNome(), clien.getCpf(), clien.getEnd(), clien.getIdConta());
 //			}
-			
+
 			return pessoas;
 
 		} catch (SQLException sqle) {
@@ -130,8 +130,6 @@ public class ClienteDAO {
 		}
 
 	}/* end getClienteFromBD */
-
-	
 
 	public void fecharConexao() throws ConexaoException {
 		FabricaConexao.fecharConexao(conn);

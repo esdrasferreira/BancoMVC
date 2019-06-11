@@ -29,9 +29,9 @@ public class TestaMVC {
 		
 		ccc.getContas();
 		ccc.getOneAccount(7);
-		ccc.depositar(07, 500.00);
+		ccc.depositar(07, 50.00);
 		ccc.getOneAccount(07);
-		ccc.sacar(7, 100);
+		ccc.sacar(7, 500);
 		
 		
 
